@@ -1,0 +1,30 @@
+function result = GaussSeidel(b,N_x,N_y)
+
+N = N_x * N_y;
+iteration = 0; error = 1;
+X = zeros(N_x+2,N_y+2); %initial guess
+% Handling nodes at edge by boundary condition since one of nodes around it may not
+% exist in matrix
+% temperature matrix X is defined in size of Nx+2,Ny+2 to represent
+% boundary condition at the outer entries in matrix
+kx = (N_x+1)^2;
+ky = (N_y+1)^2;
+while error >= 1e-4
+    iteration = iteration +1;
+    sum = 0;
+    for i=2:N_x+1
+        for j=2:N_y+1         
+            % Gauss-seidel iteration
+            X(i,j) = (-1/(2*(kx + ky)))  * (b((N_y+2)*(i-1)+j) - (X(i-1,j)+X(i+1,j))*kx - (X(i,j-1)+X(i,j+1))*ky);
+        end
+    end
+    for i=2:N_x+1
+        for j=2:N_y+1
+            sum = sum + (b((N_y+2)*(i-1)+j) - (X(i-1,j)-2*X(i,j)+X(i+1,j))*kx - (X(i,j-1)-2*X(i,j)+X(i,j+1))*ky)^2;
+        end
+    end
+    
+    error = sqrt(sum/N);
+end
+result = X(2:end-1,2:end-1);
+end
