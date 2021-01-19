@@ -1,0 +1,16 @@
+function A = LinearEquationSystem(N_x,N_y)
+
+h_x = 1/(N_x+1);
+h_y = 1/(N_y+1);
+k1 = -2/h_x^2 - 2/h_y^2;
+
+% creating a block
+diagonal_block = eye(N_y) * k1;
+diagonal_block = diagonal_block + diag(ones(N_y-1,1)/h_y^2,1);
+diagonal_block = diagonal_block + diag(ones(N_y-1,1)/h_y^2,-1);
+% mirroring the block
+A = kron(eye(N_x), diagonal_block);
+% adding other diagonal terms
+A = A + diag(ones((N_x-1)*(N_y),1)/h_x^2, N_y);
+A = A + diag(ones((N_x-1)*(N_y),1)/h_x^2, -N_y);
+end
