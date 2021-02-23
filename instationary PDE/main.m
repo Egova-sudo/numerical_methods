@@ -1,3 +1,7 @@
+%{ 
+  Author: Ege Apaydin
+  Date: 31.01.2021
+  %}
 clc
 clear all
 close all
