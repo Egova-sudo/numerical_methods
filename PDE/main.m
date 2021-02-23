@@ -1,3 +1,19 @@
+%{
+   Author: Ege Apaydin
+   Date: 17.01.2021
+   
+   A partial differential equation depending on two spatial variables is numerically solved by Gauss-Seidel iterations, 
+   full-matrix inversion, and sparse matrix inversion. The PDE of interest in this case is two-dimensional heat
+   equation:
+    T_xx + T_yy = -2π^2 sin(πx)sin(πy)                     (i)
+    
+   Convert the systems of equation to the form Ax = b. The vector b will contain the values from the equation (i), matrix A
+   consists of coefficients in front of temperature variables, and the vector x is temperature variables itself at node points
+   over unit square [0,1}^2.
+   Write T_xx and T_yy as finite difference approximation of the second derivatives:
+    T_xx|i,j = T(i-1,j) -2T(i,j) + T(i+1,j) / (h_x)^2 where h_x is step size in x direction.
+    %}
+   
 clc
 clear all
 close all
