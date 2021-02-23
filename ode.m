@@ -1,3 +1,12 @@
+%{ 
+  Author: Ege Apaydin
+  Date: 03.12.2020
+  Goal: The intent is to examine the behaviour of explicit Euler method, Heun method, and
+  Runge-Kutta 4th order on a simple ordinary differential equations. ODE is chosen such that
+  the analytical solution can be derived to compare with the numerical solution.
+  
+  }%
+  
 clc
 clear all
 close all
