@@ -5,7 +5,7 @@
   Runge-Kutta 4th order on a simple ordinary differential equations. ODE is chosen such that
   the analytical solution can be derived to compare with the numerical solution.
   
-  }%
+  %}
   
 clc
 clear all
